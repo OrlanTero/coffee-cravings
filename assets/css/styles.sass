@@ -1,0 +1,764 @@
+$brown: #8d5c48
+$whitesmoke: #f6f3ef
+$selected: #fdf2e2
+$blue: #38b6ff
+$red: #ff5757
+$darkgray: #272727
+$global_boxshadow:   rgba(0, 0, 0, 0.2) 0px 1px 2px 0px
+$grey: #ebeeee
+
+.red
+    background: $red !important 
+.blue
+    background: $blue !important
+.flex-content
+    display: flex
+    justify-content: center
+    align-content: center
+    // .table-content
+    //     width: 60%
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+body
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    width: 100%
+
+.main-content
+    width: 100%
+    min-height: 100vh
+    background-image: url("../media/images/background.png")
+    background-size: cover
+    background-repeat: no-repeat
+    position: relative
+   
+    .main-container
+        margin: 10%
+        position: absolute
+        width: 89%
+        .flex-content
+            display: flex
+            justify-content: flex-end
+            .buttons-content
+                width: 50%
+                height: 100%
+                display: flex
+                justify-content: center
+                .buttons-container
+                    margin-top: 10%
+                    width: 300px
+                    // background: $brown
+                    background: rgba(170,111,65, 0.90)
+                    border-radius: 10px
+                    padding: 4%
+                    .text-button
+                        padding: 10px
+                        background: #fff
+                        margin: 10px
+                        text-align: center
+                        border-radius: 4px
+                        cursor: pointer
+                        user-select: none
+                        text-decoration: none
+                        color: $darkgray
+                        display: block
+                        span
+                            color: $darkgray
+                            font-size: 20px
+                            font-weight: 700
+.program-content
+    width: 100%
+    min-height: 100vh
+    background: $whitesmoke
+    .flex-two-row
+        display: grid
+        grid-template-columns: 1fr 0.3fr
+        .row-1
+            padding: 10px
+            width: 100%
+            height: 100vh
+            overflow-y: auto
+        .row-2
+            min-width: 350px
+            height: 100vh
+            top: 0
+            right: 0
+            overflow-y: auto
+            .order-information-container-parent
+                width: 100%
+                height: 100%
+                background: #fff
+                box-shadow: $global_boxshadow
+                .order-information-container
+                    padding-top: 20px
+                    .container-bot
+                        padding: 10px    
+                        .submit-container
+                            margin-top: 20px
+                            width: 100%
+                            padding: 5px
+                            .icon-button
+                                width: 100%
+                                padding: 14px 18px
+                                
+                    .key-value-container
+                        padding: 5px 10px
+                        display: flex
+                        font-size: 16px
+                        justify-content: space-between
+                        align-items: center
+                    .products-order-container
+                        max-height: 210px
+                        border-bottom: 4px solid $brown
+                        overflow: auto
+                        .item
+                            padding: 10px
+                            display: flex
+                            justify-content: space-between
+                            position: relative
+                            border-radius: 
+                            &:hover
+                                background: #ebeeee
+                            .item-left
+                                display: flex
+                                height: 100%
+                                position: relative
+                                .small-circular-button
+                                    margin-top: 5px
+                                    display: flex
+                                    justify-content: center
+                                    align-items: center
+                                .text
+                                    margin-left: 10px
+                                    p
+                                        font-size: 16px
+                                        font-weight: 500
+                                        color: $darkgray
+                                   
+       
+    .main-header
+        height: 150px
+        padding: 10px
+        padding: 10px 60px
+        &.large
+            padding: 10px 10px
+            padding-left: 20px
+        .header-top
+            .top-button
+                display: block
+                width: 150px
+            .text-button
+                display: flex
+                justify-content: center
+                align-items: center
+                padding: 10px
+                cursor: pointer
+                user-select: none
+                text-decoration: none
+                &:active
+                    transform: scale(0.9)
+                .icon
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    margin: 0 10px
+                    svg,path
+                        width: 24px
+                        height: auto
+                        fill: $brown
+                .text
+                    span
+                        color: $brown
+                        font-size: 24px
+                        font-weight: 700
+        .header-bot
+            display: flex
+            justify-content: space-between
+            padding: 0 10px
+            align-items: center
+            .header-left
+                span
+                    font-size: 18px
+                    color: $darkgray
+                p
+                    font-size: 20px
+                    color: $darkgray
+                    font-weight: 700
+            .header-right
+                display: flex
+                justify-content: flex-end
+                align-items: center
+.search-engine-container
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 40px
+    width: 350px
+    box-shadow: $global_boxshadow
+    border-radius: 8px
+    .search-engine
+        width: 100%
+        height: 100%
+        padding: 10px 14px
+        font-size: 15px
+        outline: none
+        border: none
+        font-weight: 600
+        border-top-left-radius: 8px
+        border-bottom-left-radius: 8px !important
+    .search-button
+        width: 200px
+        height: 100%
+        background: $brown
+        display: flex
+        justify-content: center
+        align-items: center
+        border-top-right-radius: 8px
+        border-bottom-right-radius: 8px
+        .text
+            text-align: center
+            span
+                font-size: 16px
+                color: #fff
+                font-weight: 600
+.center-container
+    display: flex
+    justify-content: center
+    align-items: center
+
+.grid-table-container
+    margin: 10px
+    width: 90%
+    &.full-width
+        width: 100%
+    .table-info-container
+        margin-bottom: 30px
+        display: flex
+        justify-content: space-between
+        &.start
+            justify-content: flex-start
+            .info-right
+                margin-left: 6%
+
+        .info-left,.info-right
+            display: flex
+            .title h1
+                color: $darkgray
+                white-space: nowrap
+            .custom-combo-box
+                margin: 0 30px
+            .icon-button
+                margin: 0 10px
+    .grid-table
+        box-shadow: $global_boxshadow
+        border-radius: 8px
+        width: 100%
+        .grid-table-header
+            width: 100%
+            height: 50px
+            background: #fff
+            border-top-left-radius: 8px
+            border-top-right-radius: 8px    
+            th
+                border-bottom: 2px solid $brown !important
+    .grid-table-items
+        width: 100%
+        .table-header
+            width: 100%
+            display: grid
+            grid-template-columns: 1fr 1fr 1fr 1fr 
+            .header-button
+                width: 100%
+                height: 50px
+                display: flex
+                justify-content: center
+                align-items: center
+                .icon-button
+                    background: #fff
+                    min-width: 200px
+                    box-shadow: $global_boxshadow
+                    .text
+                        span
+                            color: $brown
+                            font-size: 18px
+                            font-weight: 700
+                    &.selected
+                        background: $brown !important
+                        .text
+                            span
+                                color: #fff
+        .table-body
+            display: flex
+            justify-content: center
+            align-items: center
+            margin-top: 20px
+            // height: calc( 100vh - 250px )  
+            // overflow-y: auto
+        .body-grid-table
+            width: 100%
+            display: grid
+            grid-template-columns: 1fr 1fr 1fr 1fr  
+            .body-grid-table-item
+                min-width: 220px
+                width: auto
+                min-height:  150px
+                border-radius: 4px
+                box-shadow: $global_boxshadow
+                margin: 10px
+                padding: 10px
+                cursor: pointer
+                background: #fff
+                &.selected
+                    background: $brown
+                    .item-bot
+                        p,span
+                            color: #fff
+                .item-top
+                    height: 120px
+                    border-radius: 8px
+                    background: #fff
+                    box-shadow: $global_boxshadow
+
+                    .image,img
+                        width: 100%
+                        height: 100%
+                        object-fit: cover
+                        border-radius: 8px
+                .item-bot
+                    padding: 10px 0
+                    p
+                        font-size: 18px
+                        color: $darkgray
+                    span
+                        font-size: 17px
+                        color: $brown
+                        font-weight: 700
+
+
+.custom-combo-box
+    position: relative
+    box-shadow: $global_boxshadow
+    border: 1px solid $grey
+    cursor: pointer
+    display: flex
+    align-items: center
+    color: $darkgray
+    max-height: 40px
+    &.show
+        .floating-container
+            display: block
+    .content
+        display: flex
+        align-items: center
+        align-content: center
+        width: 100%
+        justify-content: space-between
+        input
+            padding: 5px 20px
+            width: 100%
+            height: 100%
+            font-size: 16px
+            font-weight: 500
+            outline: none
+            background: none
+            border: none
+            cursor: pointer
+            color: $darkgray
+        .icon
+            width: 40px
+            height: 40px
+            min-width: 40px
+            min-height: 40px
+            max-width: 40px
+            display: flex
+            justify-content: center
+            align-items: center
+            svg,path
+                width: 24px
+                height: auto
+    .floating-container
+        position: absolute
+        top: 101%
+        background: #fff
+        box-shadow: $global_boxshadow
+        width: 100%
+        display: none
+        min-height: 50px
+        max-height: 150px
+        overflow: auto
+        z-index: 8
+        .item
+            padding: 5px 10px
+            cursor: pointer
+            user-select: none
+            color: $darkgray
+            &.hide
+                display: none
+            &:hover
+                background: $grey
+.icon-title
+    display: flex
+    align-items: center
+    .icon
+        margin-right: 10px
+        display: flex
+        align-items: center
+        justify-content: center
+        svg,path
+            width: 40px
+            height: auto
+            color: $darkgray
+            fill: $darkgray
+    .title 
+        font-size: 30px
+        color: $darkgray
+        font-weight: 600
+.small-circular-button
+    width: 30px
+    height: 30px
+    border-radius: 50%
+    background: #fff
+    cursor: pointer
+    box-shadow: $global_boxshadow
+    -webkit-user-drag: none
+    &:active
+        transform: scale(0.9)
+    .icon
+        user-select: none
+        width: 100%
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        svg,path
+            width: 18px
+            height: auto
+.icon-button
+    padding: 8px 12px
+    background: $brown
+    text-align: center
+    border-radius: 4px
+    cursor: pointer
+    user-select: none
+    text-decoration: none
+    display: flex
+    align-items: center
+    justify-content: center
+    max-height: 40px
+    box-shadow: $global_boxshadow
+    &.hide
+        display: none !important
+    &.plain
+        background: $whitesmoke
+        .icon
+            svg,path
+                color: $darkgray
+                fill: $darkgray
+    .icon
+        margin-right: 10px
+        display: flex
+        align-items: center
+        justify-content: center
+        svg,path
+            width: 24px
+            height: auto
+            color: #fff
+            fill: #fff
+    .text 
+        display: flex
+        align-items: center
+        justify-content: center
+        white-space: nowrap
+        span
+            color: #fff
+            font-weight: 600
+            font-size: 15px
+    &:active
+        transform: scale(0.9)
+.custom-checkbox-parent
+    width: 40px
+    height: 40px
+    padding: 10px
+    border-radius: 50%
+    cursor: pointer
+    display: flex
+    justify-content: center
+    &:hover
+        .circle
+            background: #cccccc98
+    .circle
+        width: 40px
+        height: 40px
+        padding: 10px
+        border-radius: 50%
+        cursor: pointer
+        position: absolute
+        top: 10%
+        margin-left: -10px
+        z-index: -1
+    .checkbox-content
+        width: 100%
+.custom-checkbox 
+	position: relative 
+	cursor: pointer 
+	font-size: 20px 
+	-webkit-user-select: none 
+	-moz-user-select: none 
+	-ms-user-select: none 
+	user-select: none 
+    box-shadow: $global_boxshadow
+
+	input 
+		position: absolute 
+		opacity: 0 
+		cursor: pointer 
+		height: 0 
+		width: 0 
+		&:checked 
+			& ~ .checkmark 
+				background-color: $brown 
+				&:after 
+					display: block 
+	.checkmark 
+		&:after 
+			left: 6px 
+			top: 2px 
+			width: 5px 
+			height: 10px 
+			border: solid white 
+			border-width: 0 3px 3px 0 
+			-webkit-transform: rotate(45deg) 
+			-ms-transform: rotate(45deg) 
+			transform: rotate(45deg) 
+.checkmark 
+	position: absolute 
+	top: 0 
+	left: 0 
+	height: 20px 
+	width: 20px 
+	background-color: #eee 
+	&:after 
+		content: "" 
+		position: absolute 
+		display: none 
+
+.popup-container
+    z-index: 100
+    .popup-container-parent
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        z-index: 999
+        .popup-background
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            background: rgba(0, 0,0 , 0.60)
+            z-index: -1
+        .popup-content
+            z-index: 2
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 100%
+            .popup-long-container
+                padding: 20px
+                width: 80%
+                min-height: 300px
+                box-shadow: $global_boxshadow
+                border-radius: 8px
+                z-index: 999
+                background: #fff
+                position: relative
+                table
+                    width: 100%
+                .popup-close-button
+                    position: absolute
+                    right: -25px
+                    top: -25px
+                    width: 50px
+                    height: 50px
+                    border-radius: 50%
+                    background: #fff
+                    box-shadow: $global_boxshadow
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    cursor: pointer
+                    &:active
+                        transform: scale(0.8)
+                    .icon
+                        display: flex
+                        justify-content: center
+                        align-items: center
+            .popup-container
+                width: 400px
+                min-height: 100px
+                background: #fff
+                box-shadow: $global_boxshadow
+                border-radius: 8px
+                z-index: 999
+                .popup-header
+                    padding: 20px 20px
+                    .preview-image 
+                        margin-top: 20px
+                        padding: 10px
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        &.hide
+                            display: none
+                        .preview 
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            width: 150px
+                            
+                            img
+                                width: 100%
+                                height: auto
+                                object-fit: contain
+                                border-radius: 4px
+                                box-shadow: $global_boxshadow
+                .popup-body
+                    padding: 10px 20px
+                    
+                .popup-footer
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    padding: 20px 10px
+                    .icon-button
+                        margin: 0 20px
+
+                 
+.double-table
+    margin: 0 20px
+    width: 35%
+    background: #fff
+    border-radius: 4px
+    padding: 10px
+    box-shadow: $global_boxshadow
+    .top
+        .title
+            h3
+                color: $darkgray
+                padding: 10px
+            p
+                font-weight: 600
+                color: $brown
+                padding: 0 10px
+.custom-grid-table 
+    overflow-y: auto
+    max-height: calc( 100vh - 250px )  
+    min-height: 300px
+    background: #fff
+    box-shadow: $global_boxshadow 
+    &.no-scroll
+        overflow: hidden !important
+        max-height: none !important
+.custom-grid-table 
+    width: 100%
+    thead
+        background: #fff !important
+.custom-grid-table thead th 
+    position: sticky
+    top: 0
+    z-index: 1
+    border-bottom: 2px solid $brown
+    background: #fff
+    box-shadow: $global_boxshadow
+    text-transform: uppercase
+    // white-space: nowrap
+    height: 50px !important
+
+table 
+    border-collapse: collapse
+    width: 100% !important
+    position: relative
+    background: #fff
+    tr
+        cursor: pointer
+        user-select: none
+        &:hover
+            background: #dfdfdf 
+        &:nth-child(even)
+            background: $whitesmoke 
+        &.selected
+            background: $selected !important
+    td
+        height: 45px
+    th, td 
+        padding: 5px
+        text-align: left
+form 
+    .form-group
+        padding: 5px 10px
+        display: flex
+        .three-flex-content
+            display: flex
+            input
+                box-shadow: $global_boxshadow
+                &:first-child
+                    margin-right: 5px
+                    width: 100px
+                &:nth-child(2)
+                    margin-right: 5px
+            .custom-combo-box
+                height: 100% !important
+                max-height: 100% !important
+                input
+                    box-shadow: none
+                .icon
+                    display: none   
+        .title
+            margin: 20px 0
+            h2
+                color: $darkgray
+            p
+                color: $brown
+                font-size: 16px
+                font-weight: 600
+        .with-label
+            padding: 5px
+            input
+                margin-top: 10px
+        label
+            font-weight: 600
+        input   
+            padding: 12px 14px
+            width: 100%
+            outline: $brown
+            background: $whitesmoke
+            font-size: 16px
+            border: 1px solid transparent
+        &.error
+            input
+                border: 1px solid $red
+        .custom-combo-box
+            width: 100%
+            background: $whitesmoke
+
+        .add-minus-button
+            display: flex
+            align-items: center
+            justify-content: center
+            
+            .txt
+                width: 70px
+                input
+                    width: 100%
+                    padding: 10px 12px
+                    background: none
+                    text-align: center
+
+    
+    
