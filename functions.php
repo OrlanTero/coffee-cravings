@@ -81,11 +81,17 @@ function Update($table, $data, $where, $database)
     return $stmt->execute();
 }
 
-function Insert($table, $data, $database)
+function Insert($table, $data, $database, $getID = false)
 {
     $query = MakeInsertQuery($table, $data);
     $stmt = $database->prepare($query);
-    return $stmt->execute();
+    $ex = $stmt->execute();
+
+    if ($ex && $getID) {
+        return $database->lastInsertid();
+    }
+
+    return $ex;
 }
 
 function Search($table, $search, $into, $where, $database)

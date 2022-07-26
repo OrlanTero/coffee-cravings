@@ -260,11 +260,9 @@ export function TableListener(
     }
 
     for (const item of FILTERITEMS) {
-      item.addEventListener(
-        "click",
-        () =>
-          onFilter && onFilter(item.querySelector("span").textContent, reset)
-      );
+      item.addEventListener("click", () => {
+        onFilter && onFilter(item.querySelector("span").textContent, reset);
+      });
     }
 
     MAINCKBOX &&

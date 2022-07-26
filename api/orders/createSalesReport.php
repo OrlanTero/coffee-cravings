@@ -1,6 +1,6 @@
 <?php
-include  "../../database.php";
-include  "../../system.php";
+include "../../database.php";
+include "../../system.php";
 
 $from = $_POST["fromDate"];
 $to = $_POST["toDate"];

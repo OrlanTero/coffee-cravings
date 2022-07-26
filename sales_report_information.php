@@ -6,7 +6,6 @@ include  "./data.php";
 
 $SALESREPORT = GetSalesReports(null,$database);
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

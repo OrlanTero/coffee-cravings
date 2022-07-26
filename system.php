@@ -477,10 +477,29 @@ function CreateMembers($members, $database)
     }
 }
 
+function CreateCustomer($isMember, $id, $database)
+{
+    $customerType = filter_var($isMember, FILTER_VALIDATE_BOOLEAN) ? "Member" : "Walk In";
+    $customer = ["customer_type" => $customerType, "id" => $id];
+    return Insert("customers", $customer, $database);
+}
+
+function InsertWalkIn($order_id, $database)
+{
+    $id = Insert("walk_in", ["order_id" => $order_id], $database, true);
+    return CreateCustomer(false, $id, $database);
+}
+
 function CreateMember($member, $database)
 {
     $member["fullname"] = $member["lastname"] . ", " . $member["firstname"] . " " . $member["middlename"];
-    return Insert("members", $member, $database);
+    $id = Insert("members", $member, $database, true);
+
+    if ($id) {
+        return CreateCustomer(true, $id, $database);
+    }
+
+    return true;
 }
 
 
@@ -544,7 +563,7 @@ function AddOrder($order, $products, $points, $database)
                 }
             }
             else {
-                return true;
+                return InsertWalkIn($order_id, $database);
             }
         }
         else {
@@ -776,9 +795,10 @@ function RemoveSalesReports($reports, $database)
     return true;
 }
 
-function GetSalesReport($from, $to, $database)
+function GetSalesReport($from, $to, $database, $limit = false)
 {
-    $query = "SELECT * FROM orders WHERE date_made BETWEEN '$from' AND '$to' ";
+    $l = $limit ? "LIMIT $limit" : "";
+    $query = "SELECT * FROM orders WHERE date_made BETWEEN '$from' AND '$to' $l";
     $stmt = $database->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll();
@@ -796,11 +816,9 @@ function SearchSalesReports($search, $filter, $database)
 
 function CreateSalesReport($from, $to, $database)
 {
-    $reports = GetSalesReport($from, $to, $database);
+    $reports = GetSalesReport($from, $to, $database, 10);
     $report_id = uniqid() . '-' . uniqid();
-    $IDS = array_map(function ($r) {
-        return $r["order_id"];
-    }, $reports);
+    $IDS = array_column($reports, "order_id");
 
     $quantities = [];
     $totalsales = 0;
@@ -822,20 +840,40 @@ function CreateSalesReport($from, $to, $database)
     $values = array_column($quantities, "quantity");
     array_multisort($values, SORT_DESC, $quantities);
     $popular = array_slice(array_column($quantities, "product_id"), 0, 10, true);
-    $popular = implode(",", array_values($popular));
-    $orders = implode(",", $IDS);
-    $quantities = implode(",", array_slice(array_column($quantities, "quantity"), 0, 10, true));
+    $popular = array_values($popular);
+    $quantities = array_slice(array_column($quantities, "quantity"), 0, 10, true);
+    $orders = array_map(function ($quantity, $id) {
+        return [
+        "order_id" => $id,
+        "order_quantity" => $quantity
+        ];
+    }, $quantities, $IDS);
+
     if (!empty($reports)) {
-        $data = [
+        $reportData = [
             "report_id" => $report_id,
-            "orders" => $orders,
-            "popular" => $popular,
-            "quantities" => $quantities,
             "from_date" => $from,
             "to_date" => $to,
             "total_sales" => $totalsales
         ];
-        if (Insert("sales_reports", $data, $database)) {
+
+        if (Insert("sales_reports", $reportData, $database)) {
+
+            foreach ($popular as $product) {
+                $popularData = [
+                    "report_id" => $report_id,
+                    "product_id" => $product
+                ];
+
+                Insert("sales_report_populars", $popularData, $database);
+            }
+
+            foreach ($orders as $order) {
+                $orderData = array_merge(["report_id" => $report_id], $order);
+                Insert("sales_report_orders", $orderData, $database);
+            }
+
+
             return $report_id;
         }
     }
@@ -846,6 +884,16 @@ function CreateSalesReport($from, $to, $database)
 function GetSalesReportRecord($report_id, $database)
 {
     return Select("sales_reports", ["report_id" => $report_id], false, $database);
+}
+
+function GetSalesReportOrders($report_id, $database)
+{
+    return Select("sales_report_orders", ["report_id" => $report_id], true, $database);
+}
+
+function GetSalesReportPopular($report_id, $database)
+{
+    return Select("sales_report_populars", ["report_id" => $report_id], true, $database);
 }
 
 function GetOrder($order_id, $database)

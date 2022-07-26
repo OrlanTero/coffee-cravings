@@ -1,7 +1,7 @@
 <?php
-include  "../../database.php";
-include  "../../system.php";
-include  "../../data.php";
+include "../../database.php";
+include "../../system.php";
+include "../../data.php";
 
 $ITEM = [
     "name" => $_POST["name"],

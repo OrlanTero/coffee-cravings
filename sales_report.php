@@ -11,9 +11,11 @@ if (!isset($REPORT_ID)) {
 }
 
 $REPORT = GetSalesReportRecord($REPORT_ID, $database);
-$ORDERIDS = explode(",", $REPORT["orders"]);
-$POPULARIDS = explode(",", $REPORT["popular"]);
-$QUANTITIES = explode(",", $REPORT["quantities"]);
+$ORDERS = GetSalesReportOrders($REPORT_ID, $database);
+$POPULARS = GetSalesReportPopular($REPORT_ID, $database);
+$ORDERIDS = array_column($ORDERS, "order_id");
+$QUANTITIES = array_column($ORDERS, "order_quantity");
+$POPULARIDS = array_column($POPULARS, "product_id");
 
 $POPULARPRODUCTS = array_map(function ($id, $q, $db) {
     $product = GetProduct($id, $db);
@@ -24,7 +26,6 @@ $POPULARPRODUCTS = array_map(function ($id, $q, $db) {
 $ORDERS = array_map(function ($id, $db) {
     return GetOrder($id, $db);
 }, $ORDERIDS, array_fill(0, count($ORDERIDS), $database));
-
 
 ?>
 <!DOCTYPE html>
