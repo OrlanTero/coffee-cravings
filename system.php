@@ -104,7 +104,9 @@ function CreateTable($headeritems, $bodyitems, $data, $idname, $button = -1, $no
 
     foreach ($data as $item) {
 
-        $output .= '<tr class="body-item" data-id="' . $item[$idname] . '">';
+        if (isset($item[$idname])) {
+            $output .= '<tr class="body-item" data-id="' . $item[$idname] . '">';
+        }
 
         if (!$nocheckbox) {
             $output .= '<td>' . CreateCheckbox() . '</td>';
@@ -806,7 +808,7 @@ function GetSalesReport($from, $to, $database, $limit = false)
 
 function GetSalesReports($filter, $database)
 {
-    return Select("sales_reports", $filter, true, $database);
+    return Select("sales_reports", $filter, true, $database, " ORDER BY date_made DESC");
 }
 
 function SearchSalesReports($search, $filter, $database)
@@ -833,7 +835,7 @@ function CreateSalesReport($from, $to, $database)
                 $quantities[$pr["product_id"]]["quantity"] += $pr["quantity"];
             }
 
-            $totalsales += $pr["price"];
+            $totalsales += $pr["total"];
         }
     }
 
